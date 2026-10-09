@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="auto">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Diplomatic Pouch — a weekly dispatch on the security, equity, and architecture of the systems we live inside. Written by Dr. Safi Mojidi. New dispatches Sundays at 7am Eastern.">
+<meta name="author" content="Dr. Safi Mojidi">
+<meta name="theme-color" content="#2E4732">
+<title>Diplomatic Pouch — A Weekly Dispatch by Dr. Safi Mojidi</title>
+<style>
+:root {
+  --bg: #F5F1E8;
+  --bg-elev: #FAF7F0;
+  --bg-cable: #ECE5D2;
+  --ink: #1A2332;
+  --ink-soft: #3A4254;
+  --accent: #2E4732;
+  --accent-soft: #4A6B4E;
+  --gold: #8B6914;
+  --muted: #5C6258;
+  --rule: #C9C0AE;
+  --rule-strong: #8B8472;
+  --focus: #B8860B;
+  --serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --mono: ui-monospace, 'SF Mono', Monaco, 'Cascadia Mono', 'Roboto Mono', Consolas, monospace;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --measure: 34rem;
+  --duration: 200ms;
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
+@media (prefers-color-scheme: dark) {
+  [data-theme="auto"] {
+    --bg: #1A2620; --bg-elev: #22302A; --bg-cable: #243029;
+    --ink: #F0EDE5; --ink-soft: #C8C5BD;
+    --accent: #A8C5A8; --accent-soft: #7FA382;
+    --gold: #D4A040; --muted: #8A9B8C;
+    --rule: #3A4E40; --rule-strong: #5A7060; --focus: #D4A040;
+  }
+}
+[data-theme="dark"] {
+  --bg: #1A2620; --bg-elev: #22302A; --bg-cable: #243029;
+  --ink: #F0EDE5; --ink-soft: #C8C5BD;
+  --accent: #A8C5A8; --accent-soft: #7FA382;
+  --gold: #D4A040; --muted: #8A9B8C;
+  --rule: #3A4E40; --rule-strong: #5A7060; --focus: #D4A040;
+}
+[data-theme="light"] {
+  --bg: #F5F1E8; --bg-elev: #FAF7F0; --bg-cable: #ECE5D2;
+  --ink: #1A2332; --ink-soft: #3A4254;
+  --accent: #2E4732; --accent-soft: #4A6B4E;
+  --gold: #8B6914; --muted: #5C6258;
+  --rule: #C9C0AE; --rule-strong: #8B8472; --focus: #B8860B;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 2rem; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--serif); font-size: 1.0625rem; line-height: 1.75; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; transition: background-color var(--duration) var(--ease), color var(--duration) var(--ease); }
+::selection { background: var(--accent); color: var(--bg); }
+
+.skip-link, .dp-skip-nav {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  background: var(--accent);
+  color: var(--bg);
+  padding: 0.75rem 1.25rem;
+  font-family: var(--sans);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 4px;
+  z-index: 100;
+}
+.skip-link:focus, .dp-skip-nav:focus { top: 1rem; }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; border-radius: 2px; }
+
+/* ============= CUSTOM HOMEPAGE TOP NAV ============= */
+.home-topnav {
+  background: var(--bg-elev);
+  border-bottom: 1px solid var(--rule-strong);
+  padding: 1rem 1.5rem;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+@media (min-width: 48rem) { .home-topnav { padding: 1.25rem 3rem; } }
+.home-topnav-inner {
+  max-width: 60rem;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+}
+.home-topnav-brand {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.125rem;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  text-decoration: none;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 0.5rem;
+  border-radius: 4px;
+}
+.home-topnav-brand:hover { color: var(--accent); }
+.home-topnav-brand em { font-weight: 400; color: var(--accent); }
+.home-topnav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem 0.5rem;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.home-topnav-links li { margin: 0; padding: 0; }
+.home-topnav-link {
+  color: var(--ink-soft);
+  text-decoration: none;
+  font-weight: 500;
+  min-height: 44px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.625rem 1rem;
+  border-radius: 4px;
+  transition: background-color var(--duration) var(--ease), color var(--duration) var(--ease);
+}
+.home-topnav-link:hover { background: var(--bg-cable); color: var(--accent); }
+.home-topnav-link.primary {
+  background: var(--accent);
+  color: var(--bg);
+}
+.home-topnav-link.primary:hover {
+  background: var(--accent-soft);
+  color: var(--bg);
+}
+
+/* ============= CABLE PREAMBLE ============= */
+.preamble {
+  background: var(--bg-cable);
+  border-bottom: 2px solid var(--rule-strong);
+  padding: 1.5rem 1.5rem;
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  line-height: 1.7;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+@media (min-width: 48rem) { .preamble { padding: 2rem 3rem; } }
+.preamble-inner { max-width: 60rem; margin: 0 auto; }
+.preamble-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--rule-strong);
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.preamble-precedence { font-weight: 700; color: var(--accent); letter-spacing: 0.15em; }
+.preamble-class { font-weight: 700; color: var(--gold); letter-spacing: 0.15em; }
+.preamble-class::before { content: "⚹ "; }
+.preamble-class::after { content: " ⚹"; }
+.preamble-grid { display: grid; grid-template-columns: 1fr; gap: 0.375rem 2rem; }
+@media (min-width: 40rem) { .preamble-grid { grid-template-columns: auto 1fr auto 1fr; } }
+.preamble-label { color: var(--muted); font-weight: 500; }
+.preamble-label::after { content: " ── "; color: var(--rule-strong); }
+.preamble-value { color: var(--ink); font-weight: 600; word-break: break-word; }
+.preamble-bottom {
+  padding-top: 0.75rem;
+  margin-top: 1rem;
+  border-top: 1px solid var(--rule-strong);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.preamble-bottom-note {
+  color: var(--muted);
+  font-style: italic;
+  font-size: 0.625rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ============= MASTHEAD ============= */
+.masthead {
+  padding: 4rem 1.5rem 2.5rem;
+  text-align: left;
+  border-bottom: 1px solid var(--rule);
+  position: relative;
+}
+@media (min-width: 48rem) { .masthead { padding: 6rem 3rem 4rem; } }
+.masthead-inner { max-width: 50rem; margin: 0 auto; }
+.masthead-issue {
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 1.5rem;
+}
+.masthead-issue span:not(:first-child)::before { content: "── "; color: var(--rule-strong); }
+.masthead-title {
+  font-family: var(--serif);
+  font-size: clamp(2.75rem, 9vw, 5rem);
+  font-weight: 600;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  margin: 0 0 1.25rem;
+  color: var(--ink);
+}
+.masthead-title em { font-style: italic; font-weight: 400; color: var(--accent); }
+.masthead-tagline {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(1.25rem, 2.75vw, 1.5rem);
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--ink-soft);
+  max-width: 42rem;
+  margin: 0 0 2.5rem;
+}
+.masthead-byline {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 2rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--rule);
+}
+.masthead-byline strong { color: var(--ink); font-weight: 600; }
+
+/* ============= WAX SEAL (homepage signature) ============= */
+.wax-seal-container {
+  display: flex;
+  justify-content: center;
+  margin: 3rem auto 2rem;
+}
+.wax-seal {
+  width: 7rem;
+  height: 7rem;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+}
+
+/* ============= MAIN ============= */
+.main { padding: 3rem 1.5rem 4rem; min-width: 0; }
+@media (min-width: 48rem) { .main { padding: 4rem 3rem 6rem; } }
+.dispatch { max-width: var(--measure); margin: 0 auto; }
+.dispatch-meta {
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  line-height: 1.6;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 1.25rem 0;
+  border-top: 1px solid var(--rule-strong);
+  border-bottom: 1px solid var(--rule);
+  margin: 0 0 3rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem 2rem;
+}
+@media (max-width: 40rem) { .dispatch-meta { grid-template-columns: 1fr; gap: 0.375rem; } }
+.dispatch-meta-row { display: flex; align-items: baseline; gap: 0.75rem; min-width: 0; }
+.dispatch-meta-label { color: var(--muted); font-weight: 500; white-space: nowrap; }
+.dispatch-meta-label::after { content: " ──"; color: var(--rule-strong); }
+.dispatch-meta-value { color: var(--ink); font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.dispatch-title {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 5vw, 2.75rem);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0 0 1rem;
+  color: var(--ink);
+}
+.dispatch-subtitle {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.25rem;
+  line-height: 1.4;
+  font-weight: 400;
+  color: var(--ink-soft);
+  margin: 0 0 3rem;
+}
+.dispatch p { margin: 0 0 1.5rem; hyphens: auto; -webkit-hyphens: auto; }
+.dispatch p:first-of-type::first-letter {
+  font-size: 3.5rem;
+  line-height: 0.85;
+  font-weight: 600;
+  float: left;
+  margin: 0.25rem 0.5rem 0 0;
+  color: var(--accent);
+  font-family: var(--serif);
+}
+.dispatch h3 {
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  margin: 3rem 0 1rem;
+  color: var(--accent);
+  position: relative;
+  padding-left: 1.5rem;
+}
+.dispatch h3::before {
+  content: "§";
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+  font-weight: 400;
+}
+.dispatch em { font-style: italic; }
+.dispatch strong { font-weight: 600; }
+
+.forms-list {
+  margin: 2.5rem 0;
+  padding: 0;
+  list-style: none;
+}
+.forms-list li {
+  padding: 1rem 0 1rem 1.5rem;
+  border-left: 3px solid var(--accent);
+  margin-bottom: 1rem;
+}
+.forms-list strong {
+  font-family: var(--serif);
+  color: var(--accent);
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+
+.dispatch-signature {
+  font-family: var(--serif);
+  font-style: italic;
+  margin-top: 3rem;
+  color: var(--ink-soft);
+}
+
+/* ============= HOMEPAGE BOTTOM NAV — START READING ============= */
+.start-reading {
+  background: var(--bg-elev);
+  border-top: 2px solid var(--rule-strong);
+  padding: 4rem 1.5rem 5rem;
+}
+@media (min-width: 48rem) { .start-reading { padding: 6rem 3rem 7rem; } }
+.start-reading-inner { max-width: 60rem; margin: 0 auto; }
+.start-reading-header {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 2.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.featured-dispatch {
+  background: var(--bg);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--accent);
+  border-radius: 6px;
+  padding: 2rem;
+  margin-bottom: 3rem;
+  text-decoration: none;
+  color: var(--ink);
+  display: block;
+  transition: border-color var(--duration) var(--ease), background-color var(--duration) var(--ease);
+  min-height: 88px;
+}
+.featured-dispatch:hover {
+  border-color: var(--accent);
+  background: var(--bg-cable);
+}
+.featured-label {
+  font-family: var(--mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+  display: block;
+}
+.featured-title {
+  font-family: var(--serif);
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  display: block;
+  margin-bottom: 0.75rem;
+}
+.featured-meta {
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.archive-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+}
+@media (min-width: 48rem) { .archive-list { grid-template-columns: 1fr 1fr; } }
+.archive-item { margin: 0; padding: 0; }
+.archive-link {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  padding: 0.875rem 1rem;
+  text-decoration: none;
+  color: var(--ink);
+  border-radius: 4px;
+  transition: background-color var(--duration) var(--ease);
+  min-height: 44px;
+  border: 1px solid transparent;
+}
+.archive-link:hover {
+  background: var(--bg-cable);
+  border-color: var(--rule);
+}
+.archive-num {
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  flex-shrink: 0;
+  min-width: 4.5rem;
+}
+.archive-title {
+  font-family: var(--serif);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1.3;
+  flex: 1;
+}
+.archive-form {
+  font-family: var(--mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  flex-shrink: 0;
+}
+
+/* ============= COLOPHON ============= */
+.colophon {
+  padding: 4rem 1.5rem 5rem;
+  border-top: 1px solid var(--rule-strong);
+  background: var(--bg-elev);
+}
+@media (min-width: 48rem) { .colophon { padding: 5rem 3rem 6rem; } }
+.colophon-inner { max-width: var(--measure); margin: 0 auto; }
+.colophon h2 {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 2rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--rule);
+}
+.colophon p {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  margin: 0 0 1.25rem;
+}
+.colophon a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+.colophon a:hover { color: var(--gold); }
+.colophon-meta {
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--rule);
+  text-align: center;
+}
+.colophon-end {
+  font-family: var(--mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 3rem;
+  text-align: center;
+}
+.colophon-end::before { content: "── "; }
+.colophon-end::after { content: " ──"; }
+
+/* ============= THEME TOGGLE ============= */
+.theme-toggle {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  background: var(--bg-elev);
+  border: 1px solid var(--rule-strong);
+  color: var(--ink);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--sans);
+  font-size: 1.125rem;
+  z-index: 50;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: background-color var(--duration) var(--ease), transform var(--duration) var(--ease);
+}
+.theme-toggle:hover { background: var(--accent); color: var(--bg); transform: scale(1.05); }
+.theme-toggle svg { width: 1.25rem; height: 1.25rem; stroke: currentColor; stroke-width: 1.75; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+[data-theme="light"] .icon-sun, [data-theme="auto"] .icon-sun { display: none; }
+[data-theme="dark"] .icon-moon { display: none; }
+@media (prefers-color-scheme: dark) {
+  [data-theme="auto"] .icon-moon { display: none; }
+  [data-theme="auto"] .icon-sun { display: block; }
+}
+
+@media print {
+  body { background: white; color: black; font-size: 11pt; line-height: 1.5; }
+  .theme-toggle, .skip-link, .dp-skip-nav, .home-topnav, .start-reading { display: none; }
+  .preamble { background: white; border: 1pt solid black; color: black; }
+  .preamble-precedence, .preamble-class { color: black; }
+  .masthead { border-bottom: 2pt solid black; }
+  .masthead-title { color: black; font-size: 28pt; }
+  .masthead-title em { color: black; }
+  .dispatch-meta { border-color: black; color: black; }
+  .dispatch-meta-label::after { color: black; }
+  .dispatch-meta-value { color: black; }
+  .dispatch-title { color: black; }
+  .dispatch h3 { color: black; }
+  .dispatch h3::before { color: black; }
+  .dispatch p:first-of-type::first-letter { color: black; }
+  .colophon { background: white; border-top: 2pt solid black; }
+  a { color: black; text-decoration: underline; }
+}
+
+.dispatch-cover {
+  margin: 0 auto 3rem;
+  max-width: min(44rem, 100%);
+  width: 100%;
+  padding: 0;
+}
+.dispatch-cover img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15), 0 1px 3px rgba(0,0,0,0.1);
+}
+@media (prefers-color-scheme: dark) {
+  [data-theme="auto"] .dispatch-cover img {
+    box-shadow: 0 4px 24px rgba(0,0,0,0.5), 0 1px 3px rgba(0,0,0,0.3);
+  }
+}
+[data-theme="dark"] .dispatch-cover img {
+  box-shadow: 0 4px 24px rgba(0,0,0,0.5), 0 1px 3px rgba(0,0,0,0.3);
+}
+.dispatch-cover figcaption {
+  margin-top: 0.75rem;
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-align: center;
+}
+@media print {
+  .dispatch-cover img { box-shadow: none; border: 1pt solid black; }
+}
+.dispatch-cover-missing {
+  margin: 0 auto 3rem;
+  max-width: min(44rem, 100%);
+  aspect-ratio: 1 / 1;
+  background: repeating-linear-gradient(45deg, var(--bg-elev), var(--bg-elev) 10px, var(--bg) 10px, var(--bg) 20px);
+  border: 1px dashed var(--rule);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border-radius: 4px;
+}
+
+
+/* === OPTION B REDESIGN — Compressed cable signature + hero typography === */
+.signature-bar {
+  background: var(--bg-elev);
+  border-bottom: 1px solid var(--rule);
+  padding: 0.75rem 1rem;
+  font-family: var(--mono);
+}
+.signature-bar-inner {
+  max-width: 64rem;
+  margin: 0 auto;
+  font-size: 0.8125rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-align: center;
+  line-height: 1.5;
+  white-space: nowrap;
+  overflow-x: auto;
+  padding: 0 0.5rem;
+}
+.signature-bar .sig-pub {
+  font-family: var(--serif);
+  font-style: italic;
+  text-transform: none;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  color: var(--accent);
+  font-size: 0.9375rem;
+}
+.signature-bar .sig-pub em { font-style: italic; color: var(--ink); }
+.signature-bar .sig-sep { color: var(--muted); margin: 0 0.4rem; opacity: 0.6; }
+.signature-bar .sig-sealed { color: var(--gold); font-weight: 600; }
+@media (max-width: 32rem) {
+  .signature-bar { padding: 0.625rem 0.75rem; }
+  .signature-bar-inner {
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    white-space: normal;
+    overflow-x: visible;
+  }
+  .signature-bar .sig-pub { font-size: 0.875rem; display: block; margin-bottom: 0.2rem; }
+  .signature-bar .sig-pub + .sig-sep { display: none; }
+  .signature-bar .sig-sep { margin: 0 0.3rem; }
+  .signature-bar .sig-sep-last { display: none; }
+  .signature-bar .sig-sealed { display: block; margin-top: 0.25rem; opacity: 0.85; color: var(--gold); }
+}
+.dispatch > .dispatch-title, .dispatch-title {
+  font-family: var(--serif);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.08;
+  color: var(--ink);
+  margin: 2.5rem 0 1rem;
+  font-size: clamp(2rem, 7vw, 3.25rem);
+}
+.dispatch-subtitle {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(1.0625rem, 2.5vw, 1.375rem);
+  line-height: 1.5;
+  color: var(--ink-soft);
+  margin: 0 0 1.5rem;
+  font-weight: 400;
+}
+.dispatch-byline {
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  margin: 0 0 2rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.75rem;
+  align-items: baseline;
+}
+.dispatch-byline .byline-author strong { color: var(--ink); font-weight: 700; letter-spacing: 0.04em; }
+.dispatch-byline .byline-sep { opacity: 0.5; }
+.dispatch-byline .byline-form { color: var(--accent); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+@media (max-width: 32rem) {
+  .dispatch-byline { font-size: 0.75rem; gap: 0.4rem 0.6rem; }
+}
+.main { padding-top: 1.5rem; }
+@media (min-width: 48rem) { .main { padding-top: 2.5rem; } }
+
+</style>
+</head>
+<body>
+<!--
+  DIPLOMATIC POUCH HOMEPAGE — UPDATE URLS BEFORE PUBLISHING
+  =========================================================
+  Find and replace {{GOOGLE_SITES_URL}} with your actual Google Sites base URL.
+  Example: if your Sites URL is https://sites.google.com/view/diplomatic-pouch
+  then replace {{GOOGLE_SITES_URL}} with that URL.
+
+  The subscription link uses {{SUBSCRIBE_URL}} — replace with your actual
+  subscribe mechanism (Substack URL, Google Form, Mailchimp, etc.) once set up.
+
+  Each issue page should be at {{GOOGLE_SITES_URL}}/issue-NNN
+  The archive page should be at {{GOOGLE_SITES_URL}}/archive
+  The about page should be at {{GOOGLE_SITES_URL}}/about
+-->
+
+<a class="skip-link" href="#main">Skip to main content</a>
+<a class="dp-skip-nav" href="#home-topnav">Skip to navigation</a>
+
+<!-- ============= CUSTOM HOMEPAGE TOP NAV ============= -->
+<nav class="home-topnav" id="home-topnav" role="navigation" aria-label="Publication navigation">
+  <div class="home-topnav-inner">
+    <a href="{{GOOGLE_SITES_URL}}" class="home-topnav-brand" aria-label="Diplomatic Pouch home" aria-current="page">Diplomatic <em>Pouch</em></a>
+    <ul class="home-topnav-links">
+      <li><a class="home-topnav-link" href="{{GOOGLE_SITES_URL}}/about" aria-label="About this publication">About</a></li>
+      <li><a class="home-topnav-link" href="{{GOOGLE_SITES_URL}}/archive" aria-label="View all dispatches">Dispatches</a></li>
+      <li><a class="home-topnav-link primary" href="{{SUBSCRIBE_URL}}" aria-label="Subscribe to Diplomatic Pouch">Subscribe</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ============= CABLE TRANSMISSION PREAMBLE ============= -->
+<header class="signature-bar" role="banner" aria-label="Publication signature">
+  <div class="signature-bar-inner">
+    <span class="sig-pub">Diplomatic <em>Pouch</em></span>
+    <span class="sig-sep" aria-hidden="true">·</span>
+    <span class="sig-form">Manifesto</span>
+    <span class="sig-sep" aria-hidden="true">·</span>
+    <span class="sig-date">23 Aug 2026</span>
+    <span class="sig-sep sig-sep-last" aria-hidden="true">·</span>
+    <span class="sig-sealed">Sealed &amp; Sent</span>
+  </div>
+</header>
+
+<!-- ============= MASTHEAD ============= -->
+<!-- ============= WAX SEAL ============= -->
+<div class="wax-seal-container" aria-hidden="true">
+  <svg class="wax-seal" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diplomatic Pouch wax seal">
+    <defs>
+      <radialGradient id="sealGrad" cx="40%" cy="40%" r="65%">
+        <stop offset="0%" stop-color="#8B6914" stop-opacity="0.95"/>
+        <stop offset="60%" stop-color="#5C4310" stop-opacity="1"/>
+        <stop offset="100%" stop-color="#2A1F08" stop-opacity="1"/>
+      </radialGradient>
+    </defs>
+    <circle cx="100" cy="100" r="85" fill="url(#sealGrad)" stroke="#2A1F08" stroke-width="1.5"/>
+    <circle cx="100" cy="100" r="75" fill="none" stroke="#E5C46A" stroke-width="0.5" opacity="0.4"/>
+    <text x="100" y="92" text-anchor="middle" font-family="serif" font-size="18" font-style="italic" font-weight="600" fill="#E5C46A">Diplomatic</text>
+    <text x="100" y="115" text-anchor="middle" font-family="serif" font-size="22" font-weight="700" fill="#E5C46A">Pouch</text>
+    <text x="100" y="135" text-anchor="middle" font-family="monospace" font-size="6" letter-spacing="2" fill="#E5C46A" opacity="0.7">VOL · I</text>
+  </svg>
+</div>
+
+<!-- ============= MAIN — THE MANIFESTO ============= -->
+<main class="main" id="main">
+  <article class="dispatch" aria-labelledby="dispatch-title">
+    <div class="dispatch-byline">
+      <span class="byline-author">By <strong>Dr. Safi Mojidi</strong></span>
+      <span class="byline-sep" aria-hidden="true">·</span>
+      <span class="byline-form">Manifesto</span>
+      <span class="byline-sep" aria-hidden="true">·</span>
+      <span class="byline-reading">~7 min read</span>
+    </div>
+
+    <h2 class="dispatch-title" id="dispatch-title">Two Mojidis in the Global Address List</h2>
+    <p class="dispatch-subtitle">A first dispatch from Diplomatic Pouch.</p>
+
+    <figure class="dispatch-cover" aria-label="Cover art for Manifesto">
+      <img src="cover-manifesto.png" alt="Cover art for Manifesto">
+      <figcaption>Cover · Manifesto</figcaption>
+    </figure>
+
+
+    <p>In the summer of 2008, my first job out of college was writing the daily agency notices for the United States Agency for International Development. Every morning before coffee, my dispatch hit the inboxes of every Foreign Service Officer assigned to USAID — from Dakar to Dhaka, Port-au-Prince to Bangkok. I was twenty-two years old.</p>
+
+    <p>For the first several months, I would regularly receive replies addressed to my mother.</p>
+
+    <p>Senior officers in posts around the world would glance at the sender field in the Global Address List, register the surname Mojidi, and reply with the familiarity of decades of professional friendship. <em>Khadijat, hope the new posting is treating you well. Khadijat, quick question on the briefing language.</em> They were not expecting two Mojidis in the GAL. They were not expecting the Mojidi writing the daily notice to be a twenty-two-year-old kid with a Nigerian passport, who had played NCAA Division I basketball at the University of Rhode Island and who, two summers earlier, had worn Nigeria's green and white at the 2007 FIBA Africa Championship for Women in Senegal — the qualifying tournament for the 2008 Beijing Olympics.</p>
+
+    <p>My mother is Khadijat Mojidi. By the time I started at AID, she had already spent close to two decades with the agency — postings in Haiti, Bangladesh, and Sierra Leone, work in the Bureau for Global Health, a career that had started years earlier in Baltimore running youth health and training programs to prevent teen pregnancy and delinquency. She would go on to serve as USAID Country Coordinator in Sierra Leone during the post-Ebola health recovery, and after twenty-five years at the agency she founded her own consulting practice. The replies that came back addressed to her were not addressed to a stranger.</p>
+
+    <p>I did not correct most of them. I would forward the misaddressed replies to my mother and let her tend the relationships she had spent her career building. What I learned in those months, by accident and proximity, was something I would only have the technical vocabulary for years later when I earned a doctorate in cybersecurity.</p>
+
+    <p>The daily cable was the CIA Triad in practice, before I knew what to call it.</p>
+
+    <h3>Confidentiality</h3>
+    <p>The cable went to a defined distribution list. The system authenticated each recipient through the Global Address List, ensuring the content only reached cleared eyes. No leakage, no broadcast. The container itself was a security control. I was twenty-two and I did not know that I was learning the first principle of information security. I knew only that the list was the list, and that the list was sacred.</p>
+
+    <h3>Integrity</h3>
+    <p>The content had to be accurate, attributable, and signed. The sender field mattered. The cable was a verifiable record. When senior officers replied addressed to my mother, the system's integrity was intact — the GAL correctly authenticated me as me. The human integrity failed because humans do not read sender fields carefully when names look familiar. That is a security lesson I have applied a thousand times since. The strongest cryptographic authentication in the world cannot save you from the human cognitive shortcut.</p>
+
+    <h3>Availability</h3>
+    <p>The cable went out daily. Every morning. Without fail. The Foreign Service ran on it. If my dispatch missed a day, posts around the world would notice within hours. A twenty-two-year-old discovering what it means to be the single point of availability for an information system that thousands of cleared officers rely on is, looking back, the most accidentally rigorous training in operational security I could have received. I learned to be afraid of my own absence in the right way — the way an operator learns to be afraid of single points of failure.</p>
+
+    <p>USAID no longer exists in the form it once did. The agency I served at the start of my career has been dismantled in a moment of political contraction that historians will spend the next generation explaining. The cables I wrote are part of a record that now belongs to an institution that does not exist as it did. I think about this often. Information systems outlive their institutions. Practice outlives the practitioner. Trust, when it has been built carefully, persists in the bodies of the people who carried it.</p>
+
+    <p>I am Dr. Safi Mojidi. I am a Black trans man, a twin, a Nigerian-born American citizen, the son of a U.S. diplomat and a Nigerian politician, and a cybersecurity consultant and incident response practitioner whose work is the careful design of digital trust for organizations that cannot afford to get it wrong. I hold a master's in Digital Forensics and Investigations and earned my doctorate at Marymount University in 2023. Before I founded my consulting practice, I spent eight years building and operationalizing cloud security operations centers at NASA, followed by four years doing the same work at the U.S. Department of Justice in Washington, D.C. My dissertation, <em>Towards a More Equitable Digital Future</em>, argued that the foundations of digital trust — reliability, security, and privacy — cannot be designed without taking seriously the intersecting marginalized identities of the people who use the systems we build. The traditional CIA Triad protects information. The next generation of practice must protect <em>people</em>, particularly the people the field has historically failed.</p>
+
+    <p>I surrendered my Nigerian passport in order to take a U.S. position of public trust with sensitive information. That work I will not write about here, and will take to my grave because that is what the seal on the pouch means.</p>
+
+    <p>Everything else, I can write about.</p>
+
+    <p>This is Diplomatic Pouch. A weekly dispatch on the security, equity, and architecture of the systems we live inside. Each week, one of three forms:</p>
+
+    <ul class="forms-list">
+      <li><strong>The Cable.</strong> A tight, expert analysis of a current security or systems story. The substance. The thing your CISO needs to understand by Tuesday.</li>
+      <li><strong>The Memoir.</strong> A dispatch from inside the work. The places I have lived, the places I have traveled, the body that carries the practice. The lineage that makes the practice possible.</li>
+      <li><strong>The Treaty.</strong> The argument. What I believe about how we should design the digital future, and why the people who have been historically locked out of designing it are the ones we need at the table.</li>
+    </ul>
+
+    <p>Sundays. Sealed and sent.</p>
+
+    <p class="dispatch-signature">— Dr. Safi Mojidi</p>
+  </article>
+</main>
+
+<!-- ============= START READING (HOMEPAGE BOTTOM NAV) ============= -->
+<nav class="start-reading" role="navigation" aria-label="Start reading the publication">
+  <div class="start-reading-inner">
+    <h2 class="start-reading-header">Start Reading</h2>
+
+    <a href="{{GOOGLE_SITES_URL}}/issue-009" class="featured-dispatch" aria-label="Featured: the most recent dispatch, Issue 009, The Long Climb, a Memoir on the URI women's basketball program">
+      <span class="featured-label">Most Recent Dispatch</span>
+      <span class="featured-title">The Long Climb</span>
+      <span class="featured-meta">Issue 009 · Memoir · ~15 minutes</span>
+    </a>
+
+    <h3 class="start-reading-header" style="margin-top: 3rem;">All Dispatches in Volume I</h3>
+    <ul class="archive-list">
+      <li class="archive-item">
+        <a class="archive-link" href="{{GOOGLE_SITES_URL}}/issue-002" aria-label="Read Issue 002: Dakar, 2007 — Toward Beijing 2008, a Memoir">
+          <span class="archive-num">No. 002</span>
+          <span class="archive-title">Dakar, 2007 — Toward Beijing 2008</span>
+          <span class="archive-form" aria-hidden="true">Memoir</span>
+        </a>
+      </li>
+      <li class="archive-item">
+        <a class="archive-link" href="{{GOOGLE_SITES_URL}}/issue-003" aria-label="Read Issue 003: The Sender Field, a Cable">
+          <span class="archive-num">No. 003</span>
+          <span class="archive-title">The Sender Field</span>
+          <span class="archive-form" aria-hidden="true">Cable</span>
+        </a>
+      </li>
+      <li class="archive-item">
+        <a class="archive-link" href="{{GOOGLE_SITES_URL}}/issue-004" aria-label="Read Issue 004: What the CIA Triad Was Never Designed to Protect, a Treaty">
+          <span class="archive-num">No. 004</span>
+          <span class="archive-title">What the CIA Triad Was Never Designed to Protect</span>
+          <span class="archive-form" aria-hidden="true">Treaty</span>
+        </a>
+      </li>
+      <li class="archive-item">
+        <a class="archive-link" href="{{GOOGLE_SITES_URL}}/issue-005" aria-label="Read Issue 005: What an Agent Is, and Why It Is Not You, a Cable">
+          <span class="archive-num">No. 005</span>
+          <span class="archive-title">What an Agent Is, and Why It Is Not You</span>
+          <span class="archive-form" aria-hidden="true">Cable</span>
+        </a>
+      </li>
+      <li class="archive-item">
+        <a class="archive-link" href="{{GOOGLE_SITES_URL}}/issue-006" aria-label="Read Issue 006: Five Places, a Memoir">
+          <span class="archive-num">No. 006</span>
+          <span class="archive-title">Five Places</span>
+          <span class="archive-form" aria-hidden="true">Memoir</span>
+        </a>
+      </li>
+      <li class="archive-item">
+        <a class="archive-link" href="{{GOOGLE_SITES_URL}}/issue-007" aria-label="Read Issue 007: The Threat Model You Inherit, a Treaty">
+          <span class="archive-num">No. 007</span>
+          <span class="archive-title">The Threat Model You Inherit</span>
+          <span class="archive-form" aria-hidden="true">Treaty</span>
+        </a>
+      </li>
+      <li class="archive-item">
+        <a class="archive-link" href="{{GOOGLE_SITES_URL}}/issue-008" aria-label="Read Issue 008: When the Audit Lies, a Cable">
+          <span class="archive-num">No. 008</span>
+          <span class="archive-title">When the Audit Lies</span>
+          <span class="archive-form" aria-hidden="true">Cable</span>
+        </a>
+      </li>
+      <li class="archive-item">
+        <a class="archive-link" href="{{GOOGLE_SITES_URL}}/issue-009" aria-label="Read Issue 009: The Long Climb, a Memoir">
+          <span class="archive-num">No. 009</span>
+          <span class="archive-title">The Long Climb</span>
+          <span class="archive-form" aria-hidden="true">Memoir</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ============= COLOPHON ============= -->
+<footer class="colophon" role="contentinfo">
+  <div class="colophon-inner">
+    <p class="colophon-meta">© 2026 Safi Mojidi · You may share this dispatch freely with attribution</p>
+  </div>
+</footer>
+
+<button class="theme-toggle" type="button" aria-label="Toggle dark mode" id="themeToggle">
+  <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+  <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+</button>
+<script>
+(function() { 'use strict';
+  var root = document.documentElement;
+  var toggle = document.getElementById('themeToggle');
+  var stored = null;
+  try { stored = localStorage.getItem('dp-theme'); } catch(e) {}
+  if (stored === 'light' || stored === 'dark') { root.setAttribute('data-theme', stored); }
+  toggle.addEventListener('click', function() {
+    var current = root.getAttribute('data-theme');
+    var systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var effective = current === 'auto' ? (systemDark ? 'dark' : 'light') : current;
+    var next = effective === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('dp-theme', next); } catch(e) {}
+    toggle.setAttribute('aria-label', next === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+  });
+  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reducedMotion) { document.documentElement.style.scrollBehavior = 'auto'; }
+})();
+</script>
+</body>
+</html>

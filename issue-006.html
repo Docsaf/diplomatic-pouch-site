@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="auto">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Diplomatic Pouch Vol. I, No. 006 — Five Places. A Memoir by Dr. Safi Mojidi on five geographies that shaped the work — Haiti, Bangladesh, Sierra Leone, South Africa, and Nigeria.">
+<meta name="author" content="Dr. Safi Mojidi">
+<meta name="theme-color" content="#2E4732">
+<title>Diplomatic Pouch — Vol. I, No. 006 — Five Places</title>
+<style>
+:root {
+  --bg: #F5F1E8;
+  --bg-elev: #FAF7F0;
+  --bg-cable: #ECE5D2;
+  --ink: #1A2332;
+  --ink-soft: #3A4254;
+  --accent: #2E4732;
+  --accent-soft: #4A6B4E;
+  --gold: #8B6914;
+  --muted: #5C6258;
+  --rule: #C9C0AE;
+  --rule-strong: #8B8472;
+  --focus: #B8860B;
+  --serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --mono: ui-monospace, 'SF Mono', Monaco, 'Cascadia Mono', 'Roboto Mono', Consolas, monospace;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --measure: 34rem;
+  --duration: 200ms;
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
+@media (prefers-color-scheme: dark) {
+  [data-theme="auto"] {
+    --bg: #1A2620; --bg-elev: #22302A; --bg-cable: #243029;
+    --ink: #F0EDE5; --ink-soft: #C8C5BD;
+    --accent: #A8C5A8; --accent-soft: #7FA382;
+    --gold: #D4A040; --muted: #8A9B8C;
+    --rule: #3A4E40; --rule-strong: #5A7060; --focus: #D4A040;
+  }
+}
+[data-theme="dark"] {
+  --bg: #1A2620; --bg-elev: #22302A; --bg-cable: #243029;
+  --ink: #F0EDE5; --ink-soft: #C8C5BD;
+  --accent: #A8C5A8; --accent-soft: #7FA382;
+  --gold: #D4A040; --muted: #8A9B8C;
+  --rule: #3A4E40; --rule-strong: #5A7060; --focus: #D4A040;
+}
+[data-theme="light"] {
+  --bg: #F5F1E8; --bg-elev: #FAF7F0; --bg-cable: #ECE5D2;
+  --ink: #1A2332; --ink-soft: #3A4254;
+  --accent: #2E4732; --accent-soft: #4A6B4E;
+  --gold: #8B6914; --muted: #5C6258;
+  --rule: #C9C0AE; --rule-strong: #8B8472; --focus: #B8860B;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: 2rem; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--serif); font-size: 1.0625rem; line-height: 1.75; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; transition: background-color var(--duration) var(--ease), color var(--duration) var(--ease); }
+::selection { background: var(--accent); color: var(--bg); }
+.skip-link { position: absolute; top: -100px; left: 1rem; background: var(--accent); color: var(--bg); padding: 0.75rem 1.25rem; font-family: var(--sans); font-size: 0.875rem; font-weight: 600; text-decoration: none; border-radius: 4px; z-index: 100; }
+.skip-link:focus { top: 1rem; }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; border-radius: 2px; }
+.preamble { background: var(--bg-cable); border-bottom: 2px solid var(--rule-strong); padding: 1.5rem 1.5rem; font-family: var(--mono); font-size: 0.6875rem; line-height: 1.7; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); }
+@media (min-width: 48rem) { .preamble { padding: 2rem 3rem; } }
+.preamble-inner { max-width: 60rem; margin: 0 auto; }
+.preamble-top { display: flex; justify-content: space-between; align-items: center; padding-bottom: 0.75rem; border-bottom: 1px solid var(--rule-strong); margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem; }
+.preamble-precedence { font-weight: 700; color: var(--accent); letter-spacing: 0.15em; }
+.preamble-class { font-weight: 700; color: var(--gold); letter-spacing: 0.15em; }
+.preamble-class::before { content: "⚹ "; }
+.preamble-class::after { content: " ⚹"; }
+.preamble-grid { display: grid; grid-template-columns: 1fr; gap: 0.375rem 2rem; }
+@media (min-width: 40rem) { .preamble-grid { grid-template-columns: auto 1fr auto 1fr; } }
+.preamble-label { color: var(--muted); font-weight: 500; }
+.preamble-label::after { content: " ── "; color: var(--rule-strong); }
+.preamble-value { color: var(--ink); font-weight: 600; word-break: break-word; }
+.preamble-bottom { padding-top: 0.75rem; margin-top: 1rem; border-top: 1px solid var(--rule-strong); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; }
+.preamble-bottom-note { color: var(--muted); font-style: italic; font-size: 0.625rem; letter-spacing: 0.1em; text-transform: uppercase; }
+.masthead { padding: 3.5rem 1.5rem 2rem; text-align: left; border-bottom: 1px solid var(--rule); }
+@media (min-width: 48rem) { .masthead { padding: 5rem 3rem 3rem; } }
+.masthead-inner { max-width: 50rem; margin: 0 auto; }
+.masthead-issue { font-family: var(--mono); font-size: 0.6875rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin: 0 0 1.5rem; display: flex; flex-wrap: wrap; gap: 0 1.5rem; }
+.masthead-issue span:not(:first-child)::before { content: "── "; color: var(--rule-strong); }
+.masthead-title { font-family: var(--serif); font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 600; line-height: 0.95; letter-spacing: -0.02em; margin: 0 0 1rem; color: var(--ink); }
+.masthead-title em { font-style: italic; font-weight: 400; color: var(--accent); }
+.masthead-tagline { font-family: var(--serif); font-style: italic; font-size: clamp(1.125rem, 2.5vw, 1.375rem); font-weight: 400; line-height: 1.4; color: var(--ink-soft); max-width: 38rem; margin: 0 0 2rem; }
+.masthead-byline { font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); display: flex; flex-wrap: wrap; gap: 0 2rem; padding-top: 1rem; border-top: 1px solid var(--rule); }
+.masthead-byline strong { color: var(--ink); font-weight: 600; }
+.main { padding: 3rem 1.5rem 4rem; min-width: 0; }
+@media (min-width: 48rem) { .main { padding: 4rem 3rem 6rem; } }
+.dispatch { max-width: var(--measure); margin: 0 auto; }
+.dispatch-meta { font-family: var(--mono); font-size: 0.6875rem; line-height: 1.6; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); padding: 1.25rem 0; border-top: 1px solid var(--rule-strong); border-bottom: 1px solid var(--rule); margin: 0 0 3rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem 2rem; }
+@media (max-width: 40rem) { .dispatch-meta { grid-template-columns: 1fr; gap: 0.375rem; } }
+.dispatch-meta-row { display: flex; align-items: baseline; gap: 0.75rem; min-width: 0; }
+.dispatch-meta-label { color: var(--muted); font-weight: 500; white-space: nowrap; }
+.dispatch-meta-label::after { content: " ──"; color: var(--rule-strong); }
+.dispatch-meta-value { color: var(--ink); font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.dispatch-title { font-family: var(--serif); font-size: clamp(2rem, 5vw, 2.75rem); font-weight: 600; line-height: 1.1; letter-spacing: -0.02em; margin: 0 0 1rem; color: var(--ink); }
+.dispatch-subtitle { font-family: var(--serif); font-style: italic; font-size: 1.25rem; line-height: 1.4; font-weight: 400; color: var(--ink-soft); margin: 0 0 3rem; }
+.dispatch p { margin: 0 0 1.5rem; hyphens: auto; -webkit-hyphens: auto; }
+.dispatch p:first-of-type::first-letter { font-size: 3.5rem; line-height: 0.85; font-weight: 600; float: left; margin: 0.25rem 0.5rem 0 0; color: var(--accent); font-family: var(--serif); }
+.dispatch h3 { font-family: var(--serif); font-size: 1.25rem; font-weight: 600; line-height: 1.3; letter-spacing: -0.01em; margin: 3rem 0 1rem; color: var(--accent); position: relative; padding-left: 1.5rem; }
+.dispatch h3::before { content: "§"; position: absolute; left: 0; color: var(--gold); font-weight: 400; }
+.dispatch em { font-style: italic; }
+.dispatch strong { font-weight: 600; }
+.pull { font-family: var(--serif); font-size: 1.5rem; line-height: 1.4; font-weight: 500; font-style: italic; color: var(--accent); margin: 2.5rem 0; padding-left: 1.5rem; border-left: 3px solid var(--accent); letter-spacing: -0.01em; }
+.dispatch-signature { font-family: var(--serif); font-style: italic; margin-top: 3rem; color: var(--ink-soft); }
+.dispatch-bridge { font-family: var(--mono); font-size: 0.6875rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--rule); }
+.dispatch-bridge strong { color: var(--accent); font-weight: 600; }
+.colophon { padding: 4rem 1.5rem 5rem; border-top: 1px solid var(--rule-strong); margin-top: 4rem; background: var(--bg-elev); }
+@media (min-width: 48rem) { .colophon { padding: 5rem 3rem 6rem; } }
+.colophon-inner { max-width: var(--measure); margin: 0 auto; }
+.colophon h2 { font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin: 0 0 2rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--rule); }
+.colophon p { font-size: 0.9375rem; line-height: 1.6; color: var(--ink-soft); margin: 0 0 1.25rem; }
+.colophon a { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.colophon a:hover { color: var(--gold); }
+.colophon-meta { font-family: var(--mono); font-size: 0.6875rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--rule); text-align: center; }
+.colophon-end { font-family: var(--mono); font-size: 0.625rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted); margin-top: 3rem; text-align: center; }
+.colophon-end::before { content: "── "; }
+.colophon-end::after { content: " ──"; }
+.theme-toggle { position: fixed; bottom: 1.5rem; right: 1.5rem; width: 2.75rem; height: 2.75rem; border-radius: 50%; background: var(--bg-elev); border: 1px solid var(--rule-strong); color: var(--ink); cursor: pointer; display: flex; align-items: center; justify-content: center; font-family: var(--sans); font-size: 1.125rem; z-index: 50; box-shadow: 0 2px 8px rgba(0,0,0,0.08); transition: background-color var(--duration) var(--ease), transform var(--duration) var(--ease); }
+.theme-toggle:hover { background: var(--accent); color: var(--bg); transform: scale(1.05); }
+.theme-toggle svg { width: 1.25rem; height: 1.25rem; stroke: currentColor; stroke-width: 1.75; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+[data-theme="light"] .icon-sun, [data-theme="auto"] .icon-sun { display: none; }
+[data-theme="dark"] .icon-moon { display: none; }
+@media (prefers-color-scheme: dark) {
+  [data-theme="auto"] .icon-moon { display: none; }
+  [data-theme="auto"] .icon-sun { display: block; }
+}
+@media print {
+  body { background: white; color: black; font-size: 11pt; line-height: 1.5; }
+  .theme-toggle, .skip-link { display: none; }
+  .preamble { background: white; border: 1pt solid black; color: black; page-break-after: avoid; }
+  .preamble-precedence, .preamble-class { color: black; }
+  .masthead { border-bottom: 2pt solid black; padding: 0 0 1rem; margin-bottom: 2rem; }
+  .masthead-title { color: black; font-size: 24pt; }
+  .masthead-title em { color: black; }
+  .dispatch-meta { border-color: black; color: black; }
+  .dispatch-meta-label::after { color: black; }
+  .dispatch-meta-value { color: black; }
+  .dispatch-title { color: black; }
+  .dispatch h3 { color: black; }
+  .dispatch h3::before { color: black; }
+  .dispatch p:first-of-type::first-letter { color: black; }
+  .pull { color: black; border-color: black; }
+  .colophon { background: white; border-top: 2pt solid black; }
+  a { color: black; text-decoration: underline; }
+  a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 9pt; }
+}
+/* ============= TOP NAV ============= */
+.dp-topnav {
+  background: var(--bg-elev);
+  border-bottom: 1px solid var(--rule-strong);
+  padding: 0.75rem 1.5rem;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+@media (min-width: 48rem) { .dp-topnav { padding: 1rem 3rem; } }
+.dp-topnav-inner {
+  max-width: 60rem;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+}
+.dp-topnav-brand {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  text-decoration: none;
+  /* AAA touch target */
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 0.5rem;
+  border-radius: 4px;
+}
+.dp-topnav-brand:hover { color: var(--accent); }
+.dp-topnav-brand em {
+  font-weight: 400;
+  color: var(--accent);
+}
+.dp-topnav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem 1rem;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.dp-topnav-links li { margin: 0; padding: 0; }
+.dp-topnav-link {
+  color: var(--ink-soft);
+  text-decoration: none;
+  font-weight: 500;
+  /* AAA touch target 44x44 */
+  min-height: 44px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  transition: background-color var(--duration) var(--ease), color var(--duration) var(--ease);
+}
+.dp-topnav-link:hover {
+  background: var(--bg-cable);
+  color: var(--accent);
+}
+.dp-topnav-link[aria-current="page"] {
+  background: var(--accent);
+  color: var(--bg);
+  font-weight: 600;
+}
+.dp-topnav-link[aria-current="page"]:hover {
+  background: var(--accent-soft);
+  color: var(--bg);
+}
+.dp-topnav-divider {
+  color: var(--rule-strong);
+  user-select: none;
+  speak: none;
+}
+
+/* ============= BOTTOM NAV ============= */
+.dp-bottomnav {
+  background: var(--bg-elev);
+  border-top: 2px solid var(--rule-strong);
+  padding: 3rem 1.5rem;
+  font-family: var(--mono);
+}
+@media (min-width: 48rem) { .dp-bottomnav { padding: 4rem 3rem; } }
+.dp-bottomnav-inner { max-width: 60rem; margin: 0 auto; }
+.dp-bottomnav-header {
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 2rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--rule);
+}
+.dp-bottomnav-prevnext {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 2rem;
+  margin-bottom: 3rem;
+}
+@media (max-width: 36rem) {
+  .dp-bottomnav-prevnext { grid-template-columns: 1fr; }
+}
+.dp-prevnext-card {
+  display: block;
+  padding: 1.25rem;
+  background: var(--bg);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  text-decoration: none;
+  color: var(--ink);
+  transition: border-color var(--duration) var(--ease), background-color var(--duration) var(--ease);
+  /* AAA touch target — entire card is the target */
+  min-height: 88px;
+}
+.dp-prevnext-card:hover {
+  border-color: var(--accent);
+  background: var(--bg-cable);
+}
+.dp-prevnext-label {
+  font-size: 0.625rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+.dp-prevnext-label::before {
+  content: "←  ";
+  speak: none;
+}
+.dp-prevnext-card.next .dp-prevnext-label::before {
+  content: "→  ";
+}
+.dp-prevnext-card.next .dp-prevnext-label {
+  text-align: right;
+}
+.dp-prevnext-card.next {
+  text-align: right;
+}
+.dp-prevnext-title {
+  font-family: var(--serif);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--ink);
+  display: block;
+  margin-bottom: 0.375rem;
+}
+.dp-prevnext-meta {
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.dp-prevnext-empty {
+  padding: 1.25rem;
+  border: 1px dashed var(--rule);
+  border-radius: 6px;
+  color: var(--muted);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+  min-height: 88px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dp-prevnext-empty.next { text-align: center; }
+
+/* ============= ALL ISSUES LIST ============= */
+.dp-allissues {
+  margin-top: 2rem;
+}
+.dp-allissues-header {
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 1.5rem;
+}
+.dp-allissues-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+}
+@media (min-width: 48rem) {
+  .dp-allissues-list { grid-template-columns: 1fr 1fr; }
+}
+.dp-allissues-item { margin: 0; padding: 0; }
+.dp-allissues-link {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  padding: 0.625rem 0.75rem;
+  text-decoration: none;
+  color: var(--ink);
+  border-radius: 4px;
+  transition: background-color var(--duration) var(--ease);
+  /* AAA touch target — generous padding ensures 44px+ */
+  min-height: 44px;
+}
+.dp-allissues-link:hover {
+  background: var(--bg-cable);
+}
+.dp-allissues-link[aria-current="page"] {
+  background: var(--accent);
+  color: var(--bg);
+  font-weight: 600;
+}
+.dp-allissues-num {
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  flex-shrink: 0;
+  min-width: 4.5rem;
+}
+.dp-allissues-link[aria-current="page"] .dp-allissues-num {
+  color: var(--bg);
+}
+.dp-allissues-title {
+  font-family: var(--serif);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1.3;
+  flex: 1;
+}
+.dp-allissues-form {
+  font-family: var(--mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  flex-shrink: 0;
+}
+.dp-allissues-link[aria-current="page"] .dp-allissues-form {
+  color: var(--bg);
+  opacity: 0.85;
+}
+
+/* Skip link addition for nav */
+.dp-skip-nav {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  background: var(--accent);
+  color: var(--bg);
+  padding: 0.75rem 1.25rem;
+  font-family: var(--sans);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 4px;
+  z-index: 100;
+}
+.dp-skip-nav:focus { top: 1rem; }
+
+/* Print: hide nav */
+@media print {
+  .dp-topnav, .dp-bottomnav, .dp-skip-nav { display: none; }
+}
+
+.dispatch-cover {
+  margin: 0 auto 3rem;
+  max-width: min(44rem, 100%);
+  width: 100%;
+  padding: 0;
+}
+.dispatch-cover img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15), 0 1px 3px rgba(0,0,0,0.1);
+}
+@media (prefers-color-scheme: dark) {
+  [data-theme="auto"] .dispatch-cover img {
+    box-shadow: 0 4px 24px rgba(0,0,0,0.5), 0 1px 3px rgba(0,0,0,0.3);
+  }
+}
+[data-theme="dark"] .dispatch-cover img {
+  box-shadow: 0 4px 24px rgba(0,0,0,0.5), 0 1px 3px rgba(0,0,0,0.3);
+}
+.dispatch-cover figcaption {
+  margin-top: 0.75rem;
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-align: center;
+}
+@media print {
+  .dispatch-cover img { box-shadow: none; border: 1pt solid black; }
+}
+.dispatch-cover-missing {
+  margin: 0 auto 3rem;
+  max-width: min(44rem, 100%);
+  aspect-ratio: 1 / 1;
+  background: repeating-linear-gradient(45deg, var(--bg-elev), var(--bg-elev) 10px, var(--bg) 10px, var(--bg) 20px);
+  border: 1px dashed var(--rule);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border-radius: 4px;
+}
+
+
+/* === OPTION B REDESIGN — Compressed cable signature + hero typography === */
+.signature-bar {
+  background: var(--bg-elev);
+  border-bottom: 1px solid var(--rule);
+  padding: 0.75rem 1rem;
+  font-family: var(--mono);
+}
+.signature-bar-inner {
+  max-width: 64rem;
+  margin: 0 auto;
+  font-size: 0.8125rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-align: center;
+  line-height: 1.5;
+  white-space: nowrap;
+  overflow-x: auto;
+  padding: 0 0.5rem;
+}
+.signature-bar .sig-pub {
+  font-family: var(--serif);
+  font-style: italic;
+  text-transform: none;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  color: var(--accent);
+  font-size: 0.9375rem;
+}
+.signature-bar .sig-pub em { font-style: italic; color: var(--ink); }
+.signature-bar .sig-sep { color: var(--muted); margin: 0 0.4rem; opacity: 0.6; }
+.signature-bar .sig-sealed { color: var(--gold); font-weight: 600; }
+@media (max-width: 32rem) {
+  .signature-bar { padding: 0.625rem 0.75rem; }
+  .signature-bar-inner {
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    white-space: normal;
+    overflow-x: visible;
+  }
+  .signature-bar .sig-pub { font-size: 0.875rem; display: block; margin-bottom: 0.2rem; }
+  .signature-bar .sig-pub + .sig-sep { display: none; }
+  .signature-bar .sig-sep { margin: 0 0.3rem; }
+  .signature-bar .sig-sep-last { display: none; }
+  .signature-bar .sig-sealed { display: block; margin-top: 0.25rem; opacity: 0.85; color: var(--gold); }
+}
+.dispatch > .dispatch-title, .dispatch-title {
+  font-family: var(--serif);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.08;
+  color: var(--ink);
+  margin: 2.5rem 0 1rem;
+  font-size: clamp(2rem, 7vw, 3.25rem);
+}
+.dispatch-subtitle {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(1.0625rem, 2.5vw, 1.375rem);
+  line-height: 1.5;
+  color: var(--ink-soft);
+  margin: 0 0 1.5rem;
+  font-weight: 400;
+}
+.dispatch-byline {
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  margin: 0 0 2rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.75rem;
+  align-items: baseline;
+}
+.dispatch-byline .byline-author strong { color: var(--ink); font-weight: 700; letter-spacing: 0.04em; }
+.dispatch-byline .byline-sep { opacity: 0.5; }
+.dispatch-byline .byline-form { color: var(--accent); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+@media (max-width: 32rem) {
+  .dispatch-byline { font-size: 0.75rem; gap: 0.4rem 0.6rem; }
+}
+.main { padding-top: 1.5rem; }
+@media (min-width: 48rem) { .main { padding-top: 2.5rem; } }
+
+</style>
+</head>
+<body>
+<!--
+  GOOGLE SITES NAV — UPDATE URLS BEFORE PUBLISHING
+  ================================================
+  Find and replace {{GOOGLE_SITES_URL}} with your actual Google Sites base URL.
+  Example: if your Sites URL is https://sites.google.com/view/diplomatic-pouch
+  then replace {{GOOGLE_SITES_URL}} with that URL.
+  Each issue page should be at {{GOOGLE_SITES_URL}}/issue-NNN
+  The archive page should be at {{GOOGLE_SITES_URL}}/archive
+-->
+
+<a class="skip-link" href="#main">Skip to main content</a>
+<a class="dp-skip-nav" href="#dp-topnav">Skip to navigation</a>
+<nav class="dp-topnav" id="dp-topnav" role="navigation" aria-label="Publication navigation">
+  <div class="dp-topnav-inner">
+    <a href="{{GOOGLE_SITES_URL}}" class="dp-topnav-brand" aria-label="Diplomatic Pouch home">Diplomatic <em>Pouch</em></a>
+    <ul class="dp-topnav-links">
+        <li><a class="dp-topnav-link" href="{{GOOGLE_SITES_URL}}/issue-005" aria-label="Previous issue: What an Agent Is, and Why It Is Not You">Issue 005</a></li>
+        <li class="dp-topnav-divider" aria-hidden="true">·</li>
+        <li><a class="dp-topnav-link" href="{{GOOGLE_SITES_URL}}/issue-006" aria-current="page" aria-label="Current issue: Five Places">Issue 006</a></li>
+        <li class="dp-topnav-divider" aria-hidden="true">·</li>
+        <li><a class="dp-topnav-link" href="{{GOOGLE_SITES_URL}}/issue-007" aria-label="Next issue: The Threat Model You Inherit">Issue 007</a></li>
+        <li class="dp-topnav-divider" aria-hidden="true">·</li>
+        <li><a class="dp-topnav-link" href="{{GOOGLE_SITES_URL}}/archive" aria-label="View all issues">All</a></li>
+    </ul>
+  </div>
+</nav>
+<header class="signature-bar" role="banner" aria-label="Publication signature">
+  <div class="signature-bar-inner">
+    <span class="sig-pub">Diplomatic <em>Pouch</em></span>
+    <span class="sig-sep" aria-hidden="true">·</span>
+    <span class="sig-issue">I/006</span>
+    <span class="sig-sep" aria-hidden="true">·</span>
+    <span class="sig-form">Memoir</span>
+    <span class="sig-sep" aria-hidden="true">·</span>
+    <span class="sig-date">27 Sep 2026</span>
+    <span class="sig-sep sig-sep-last" aria-hidden="true">·</span>
+    <span class="sig-sealed">Sealed &amp; Sent</span>
+  </div>
+</header>
+<main class="main" id="main">
+  <article class="dispatch" aria-labelledby="dispatch-title">
+    <div class="dispatch-byline">
+      <span class="byline-author">By <strong>Dr. Safi Mojidi</strong></span>
+      <span class="byline-sep" aria-hidden="true">·</span>
+      <span class="byline-form">Memoir</span>
+      <span class="byline-sep" aria-hidden="true">·</span>
+      <span class="byline-reading">~9 min read</span>
+    </div>
+    <h2 class="dispatch-title" id="dispatch-title">Five Places</h2>
+    <p class="dispatch-subtitle">What I learned watching my mother work — and what I learned on the trips that were not about her work at all.</p>
+
+    <figure class="dispatch-cover" aria-label="Cover art for Issue 006">
+      <img src="cover-006.png" alt="Cover art for Issue 006">
+      <figcaption>Cover · Issue 006</figcaption>
+    </figure>
+
+
+    <p>Port-au-Prince was the first embassy I remember being inside as a child. It was 2004 or 2005, somewhere in the long months after the coup that removed President Aristide and before the violence settled into the chronic register that has shaped Haitian life ever since. I do not remember the building exactly. I remember the way my mother changed when she crossed the threshold. The same person who had been my mother at the breakfast table became a different person at the embassy gate, in a way I did not have language for. She did not become a stranger. She became a representative.</p>
+
+    <p>Watching her cross that threshold, week after week and posting after posting, is the closest thing I have to a formal education in what an architect actually does. The job of an architect is not to design a system. The job of an architect is to hold, in one body, multiple incompatible requirements and to keep their seams from showing. Every embassy my mother worked from was an architecture problem. The funder had requirements. The country team had requirements. The field had requirements. The host government had requirements. The people whose health her programs were nominally for had requirements. Almost none of these requirements aligned. My mother's job was to design programs that held all of them at once.</p>
+
+    <p>I did not know I was watching architecture. I thought I was watching my mother do her job. The fact that they were the same thing took me twenty years to see.</p>
+
+    <p>I want to write about five places that shaped what I now do. Three of them were postings my mother worked from. Two of them were not — they were trips we took as a family, in registers different from the embassy register, that taught me different things. All five of them are part of how I now read systems. None of them would have been visible to me as instruction at the time. I am writing them down now because the instruction was real, even if it was unannounced.</p>
+
+    <h3>Haiti, 2004 – 2005</h3>
+
+    <p>The coup of February 29, 2004 had removed President Aristide. By the time I visited, U.S. Marines and the multinational interim force had been replaced by the United Nations Stabilization Mission in Haiti — MINUSTAH — which would be in the country for the next thirteen years. The interim government of President Boniface Alexandre and Prime Minister Gérard Latortue was in office. Port-au-Prince was technically a city under political authority and operationally a city in the middle of a slow-burn civil emergency that nobody in Washington wanted to call a civil emergency, because calling it that would have required different decisions.</p>
+
+    <p>My mother's work in Haiti was in health. The political crisis had not paused the agency's health portfolio; the political crisis had made the health portfolio harder to execute. Her job was to keep public health programs functional in a country where the public order they assumed was visibly degrading and where every clinic visit was potentially a security calculation.</p>
+
+    <p>I have specific memories from that visit that I am not going to write into this newsletter, because they are not mine alone to publish — they involve specific people whose stories belong to them. What I can write about is what I learned by watching my mother work in a place where the work was actively dangerous.</p>
+
+    <p>The first thing I learned was what a fortified embassy actually looks like. Before Haiti, the embassies I had been inside were buildings. In Port-au-Prince in 2004 – 2005, the embassy was not a building. The embassy was a system: perimeter walls, security checkpoints, restricted-access vehicles, a route protocol for getting from the compound to wherever the work was happening that day. The fortification was not theater. It was operational reality. Foreign Service Officers do not get hazard pay because the embassy is uncomfortable. They get hazard pay because in some postings the building is the only thing standing between the work and the violence.</p>
+
+    <p>The second thing I learned was that my mother's threat model now contained variables I had not seen her hold before. The Washington funder still wanted clean health indicators. The Haitian health workers still wanted programs that respected local conditions. And the security situation now added a third variable: which clinics could be safely reached on which days, which staff members were at higher risk, which appointments could be kept and which had to be moved. The architecture of her work now included security architecture. I did not know I was watching threat modeling. I thought I was watching my mother go to work in a place that would not let her go to work normally.</p>
+
+    <p>The cybersecurity equivalent is what happens to a security program during a sustained incident. The threat model that worked during normal operations does not work during the incident. Every variable that was stable becomes mobile. The routine wire authorization becomes the wire that may or may not be the CFO's actual instruction. The standard access path becomes the access that may or may not be currently compromised. The work continues, but the work is now layered on top of a security calculation that did not exist in normal time. The CISOs who handle incidents well are the ones who can hold the operational work and the security calculation at the same time without letting either of them collapse into the other. My mother had been doing this for twenty years before I had a vocabulary for what she was doing. Haiti was the first time I saw the layered calculation clearly enough to remember the seeing.</p>
+
+    <h3>Bangladesh</h3>
+
+    <p>Dhaka taught me about scale and density in a way I had never encountered before. The USAID Bangladesh mission is one of the largest in the agency's portfolio and has been for decades; the health work alone touches a population larger than Russia. My mother's work there was inside that portfolio.</p>
+
+    <p>What I remember about Dhaka, more than any specific scene from any specific day, is the rhythm. The way the city moves is the way a population in the tens of millions moves — not chaotically, but with a layered choreography that an outside observer mistakes for chaos because the observer is not standing in the right position to see the pattern. The same is true of the agency's work in the country. From the outside, the U.S. health investment in Bangladesh looks like a sprawl of programs whose logic is hard to follow. From the inside, the logic <em>is</em> the rhythm. The funder cannot see the rhythm. The local health worker is the rhythm. The Foreign Service Officer in between is the one who has to translate the rhythm into something the funder can absorb without disrupting the rhythm itself.</p>
+
+    <p>What Bangladesh taught me was that the operational reality at scale is a different kind of reality than the operational reality at small scale. The same threat models do not apply. A clinic visit in a smaller country posting and a clinic visit in Dhaka are structurally different events because the populations they serve and the systems they sit inside are structurally different. The architect who imagines that the same controls apply at both scales has not been to both scales. My mother had been to both scales. She did not assume the controls were the same. She designed for the rhythm.</p>
+
+    <p>Every enterprise security architect I have advised has had a version of this realization. The controls that worked when the organization was two hundred people do not work when the organization is twenty thousand, not because the controls are wrong but because the rhythm of the organization at twenty thousand is a different rhythm. The security program has to adapt to the rhythm of the population it is now serving. Bangladesh was where I first watched what that adaptation looks like at the scale of a country.</p>
+
+    <h3>Sierra Leone</h3>
+
+    <p>Sierra Leone was the posting where I understood what stewardship looks like under pressure.</p>
+
+    <p>My mother was the USAID Country Coordinator there during the post-Ebola health recovery. Ebola is the kind of crisis that breaks health systems that were not designed to absorb it, and the recovery work is not glamorous — it is the slow rebuilding of trust between communities and health workers, between health workers and the institutions paying them, between the country and the international funders who had arrived in force during the crisis and were starting to leave.</p>
+
+    <p>I watched her do this work from a distance, by then, because I was an adult in another country. What I noticed in our calls, and in the visit I made during her posting, was that the work was now almost entirely relational. The technical content was important; the relationships were the actual infrastructure. The Sierra Leoneans she worked with did not trust her because of the U.S. flag on her credentials. They trusted her because she had been doing this work for two decades and had a track record of staying through the parts that were not glamorous.</p>
+
+    <p>The technical name for this in international development is "absorption capacity" — the ability of a system to take in resources and convert them into outcomes. The post-Ebola question for Sierra Leone was not whether enough money was coming in. The post-Ebola question was whether the system that had to absorb that money had the relational infrastructure to convert it into outcomes that would still be there in five years. Almost every metric you could look at said the money was being absorbed. Almost every relational observation said the absorption was happening on terms that would not last.</p>
+
+    <p>My mother's job, as Country Coordinator, was to be present for the slow relational work that the metrics could not see. She went to meetings that did not produce deliverables. She showed up at ceremonies that did not advance any specific program. She made phone calls that were not on her workplan. The relational infrastructure she was tending was the absorption capacity. Without it, the money came in and disappeared. With it, the money came in and built something that was still standing two years after she left.</p>
+
+    <p>The cybersecurity equivalent is incident response. The first incident response framework I ever helped design at a client was rigorous, technically correct, and politically naïve. It did not account for the fact that the relational trust between the security team and the engineering team, between the security team and legal, between the security team and the executives whose careers were attached to the affected systems — that relational trust was the actual incident response infrastructure. Without it, the technical framework was paper. With it, the framework was a guide for what people who already trusted each other were going to do anyway. I rewrote that client's IR plan after the second engagement. The new plan was half the length. Most of what I had cut was specification. What I had added was a section called "Relational Preconditions" that named, by role, the trust relationships that had to be tended before the framework could be activated. I had not invented the section. I had remembered Freetown.</p>
+
+    <h3>South Africa</h3>
+
+    <p>South Africa was not a posting. It was a family trip — the kind of trip diplomatic families take when they get the chance to travel together not because of someone's work assignment but because they have decided, for once, to be somewhere as a family rather than as an extension of a posting. I do not remember exactly when we went or precisely why. What I remember is that the trip felt different from every other trip I had taken with my parents.</p>
+
+    <p>South Africa in the years after apartheid is a country whose architecture of memory is everywhere. You can read the country's recent history in the buildings, in the neighborhoods, in the way the airport handles arrivals, in the soft formality of the people who work in the tourism economy and have learned which questions to politely deflect. I was old enough to notice. I was not yet old enough to interpret everything I was noticing.</p>
+
+    <p>What I now think the trip taught me was that countries carry their threat models in their architecture. South Africa's threat models are visible in a way that most Americans never see in their own country because most Americans have not been taught to read the architecture they live in. The South African approach to gated communities, to private security, to the relationship between residents and domestic workers — all of this is a built environment that says, in advance, what the country has been afraid of and what it has been afraid of losing. The same is true of every country. The South African version is just legible.</p>
+
+    <p>The security architecture of a software system is the same kind of artifact. It encodes, in its choices, what the architects were afraid of and what they were afraid of losing. The architect who cannot read those choices is missing half of what the architecture is doing. The trip to South Africa was the first time I saw a country whose architecture I could read enough to know I was reading it. I have been reading architectures ever since.</p>
+
+    <h3>Nigeria</h3>
+
+    <p>Nigeria was the visit that I could not write a clean lesson out of. It is my birthplace. My twin sister was born there too. We were taken away before we had words for what taking-away meant. Returning to a place that is, by every document, your home but that you have no living memory of is its own category of travel. It is not nostalgia. It is not homecoming. It is a return to a place that is your origin in a register your body cannot quite confirm.</p>
+
+    <p>What I felt in Nigeria, in the trips we made back to visit, was that the country was reading me as much as I was reading it. People could place my surname. They could ask the right follow-up questions. They could tell, by something in the way I held myself, that I was diaspora — born here, raised elsewhere, returning under conditions that the country could not change. The Nigerian family members we visited were generous about all of this. The country itself was honest. Nigeria does not pretend that returning diaspora are the same as those who stayed. It welcomes us. It also notes the difference. I appreciated the honesty.</p>
+
+    <p class="pull">Authentication is sometimes a question a country gets to answer. Identification is sometimes a question the body gets to answer. The two questions are not always asked in the same room.</p>
+
+    <p>The Nigerian passport said I belonged. The body I walked around in said I had been gone. Both things were true. The country had no obligation to resolve them for me.</p>
+
+    <p>I have written about that gap in security terms in earlier dispatches — between what a system says about a person and what the person actually is. Nigeria was the original example. The country was patient with the gap. The country was also clear about it. I learned, on those trips, that the work of reconciling who a system says you are with who you actually are is the work of a lifetime. Nigeria does not finish that work for you. Nigeria gives you the room to do it.</p>
+
+    <h3>The throughline</h3>
+
+    <p>Five places. Three of them were my mother's postings — Haiti, Bangladesh, Sierra Leone. Two of them were not — South Africa, Nigeria. All five of them taught me something about what it means to do work that the people doing the work understand differently from how the people paying for the work understand it, and about what it means to be a person whose passport, body, and history are not always telling the same story about who they are.</p>
+
+    <p>Every security program I have ever worked on is, structurally, the same kind of work my mother was doing across those embassies and the same kind of reading I was learning to do in South Africa and Nigeria. There is a central authority that wants its threat model honored. There is a distributed field where the actual operational realities live. There is a translation problem in both directions, and the quality of the program depends almost entirely on whether the people doing the translation are good at their jobs.</p>
+
+    <p>The cybersecurity field has spent twenty years building better tools. The next decade is going to be about getting better at the diplomatic work — at holding two or more threat models simultaneously, at being honest about which metric measures the work and which one measures the appearance of the work, at reading the architecture of the system you are inside well enough to know what the architects were afraid of when they built it. We have not been good at this work as a field. We have hidden behind the technical work because the technical work is measurable and the diplomatic work is not. The diplomatic work is what makes the technical work survive.</p>
+
+    <p>I am, in a real sense, a second-generation diplomat. The pouch I carry is digital. The work is the same. The places I have learned to look for the seams are the places my mother taught me to look, twenty years before I had any vocabulary for what I was watching — and the places my body learned to read on its own visits back to where my passport said I was from.</p>
+
+    <p>My mother will not read this until I send it to her. She will read it the way she reads everything — once carefully, once again to think about it, then once more to find what I left out. She will tell me, in the way that only she can, what I got right about her and what I got wrong. I will revise nothing on that basis. The memoir is mine. The mother is hers. The lineage is what we are both standing on, in different bodies, in different generations of the same work.</p>
+
+    <p class="dispatch-bridge"><strong>Next dispatch ──</strong> Treaty. The threat model you inherit.</p>
+
+    <p class="dispatch-signature">— Dr. Safi Mojidi</p>
+  </article>
+</main>
+<footer class="colophon" role="contentinfo">
+  <div class="colophon-inner">
+    <p class="colophon-meta">© 2026 Safi Mojidi · You may share this dispatch freely with attribution</p>
+  </div>
+</footer>
+<nav class="dp-bottomnav" role="navigation" aria-label="Dispatch archive and prev/next navigation">
+  <div class="dp-bottomnav-inner">
+    <h2 class="dp-bottomnav-header">Continue Reading</h2>
+    <div class="dp-bottomnav-prevnext">
+      <a href="{{GOOGLE_SITES_URL}}/issue-005" class="dp-prevnext-card prev" aria-label="Previous dispatch: Issue 005, What an Agent Is, and Why It Is Not You, a Cable">
+        <span class="dp-prevnext-label">Previous Dispatch</span>
+        <span class="dp-prevnext-title">What an Agent Is, and Why It Is Not You</span>
+        <span class="dp-prevnext-meta">Issue 005 · Cable</span>
+      </a>
+      <a href="{{GOOGLE_SITES_URL}}/issue-007" class="dp-prevnext-card next" aria-label="Next dispatch: Issue 007, The Threat Model You Inherit, a Treaty">
+        <span class="dp-prevnext-label">Next Dispatch</span>
+        <span class="dp-prevnext-title">The Threat Model You Inherit</span>
+        <span class="dp-prevnext-meta">Issue 007 · Treaty</span>
+      </a>
+    </div>
+    <div class="dp-allissues">
+      <h2 class="dp-allissues-header">All Dispatches in Volume I</h2>
+      <ul class="dp-allissues-list">
+      <li class="dp-allissues-item">
+        <a class="dp-allissues-link" href="{{GOOGLE_SITES_URL}}/issue-002" aria-label="Read Issue 002: Dakar, 2007 — Toward Beijing 2008, a Memoir">
+          <span class="dp-allissues-num">No. 002</span>
+          <span class="dp-allissues-title">Dakar, 2007 — Toward Beijing 2008</span>
+          <span class="dp-allissues-form" aria-hidden="true">Memoir</span>
+        </a>
+      </li>
+      <li class="dp-allissues-item">
+        <a class="dp-allissues-link" href="{{GOOGLE_SITES_URL}}/issue-003" aria-label="Read Issue 003: The Sender Field, a Cable">
+          <span class="dp-allissues-num">No. 003</span>
+          <span class="dp-allissues-title">The Sender Field</span>
+          <span class="dp-allissues-form" aria-hidden="true">Cable</span>
+        </a>
+      </li>
+      <li class="dp-allissues-item">
+        <a class="dp-allissues-link" href="{{GOOGLE_SITES_URL}}/issue-004" aria-label="Read Issue 004: What the CIA Triad Was Never Designed to Protect, a Treaty">
+          <span class="dp-allissues-num">No. 004</span>
+          <span class="dp-allissues-title">What the CIA Triad Was Never Designed to Protect</span>
+          <span class="dp-allissues-form" aria-hidden="true">Treaty</span>
+        </a>
+      </li>
+      <li class="dp-allissues-item">
+        <a class="dp-allissues-link" href="{{GOOGLE_SITES_URL}}/issue-005" aria-label="Read Issue 005: What an Agent Is, and Why It Is Not You, a Cable">
+          <span class="dp-allissues-num">No. 005</span>
+          <span class="dp-allissues-title">What an Agent Is, and Why It Is Not You</span>
+          <span class="dp-allissues-form" aria-hidden="true">Cable</span>
+        </a>
+      </li>
+      <li class="dp-allissues-item">
+        <a class="dp-allissues-link" href="{{GOOGLE_SITES_URL}}/issue-006" aria-current="page" aria-label="Current dispatch: Issue 006, Five Places, a Memoir">
+          <span class="dp-allissues-num">No. 006</span>
+          <span class="dp-allissues-title">Five Places</span>
+          <span class="dp-allissues-form" aria-hidden="true">Memoir</span>
+        </a>
+      </li>
+      <li class="dp-allissues-item">
+        <a class="dp-allissues-link" href="{{GOOGLE_SITES_URL}}/issue-007" aria-label="Read Issue 007: The Threat Model You Inherit, a Treaty">
+          <span class="dp-allissues-num">No. 007</span>
+          <span class="dp-allissues-title">The Threat Model You Inherit</span>
+          <span class="dp-allissues-form" aria-hidden="true">Treaty</span>
+        </a>
+      </li>
+      <li class="dp-allissues-item">
+        <a class="dp-allissues-link" href="{{GOOGLE_SITES_URL}}/issue-008" aria-label="Read Issue 008: When the Audit Lies, a Cable">
+          <span class="dp-allissues-num">No. 008</span>
+          <span class="dp-allissues-title">When the Audit Lies</span>
+          <span class="dp-allissues-form" aria-hidden="true">Cable</span>
+        </a>
+      </li>
+      <li class="dp-allissues-item">
+        <a class="dp-allissues-link" href="{{GOOGLE_SITES_URL}}/issue-009" aria-label="Read Issue 009: The Long Climb, a Memoir">
+          <span class="dp-allissues-num">No. 009</span>
+          <span class="dp-allissues-title">The Long Climb</span>
+          <span class="dp-allissues-form" aria-hidden="true">Memoir</span>
+        </a>
+      </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<button class="theme-toggle" type="button" aria-label="Toggle dark mode" id="themeToggle">
+  <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+  <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+</button>
+<script>
+(function() { 'use strict';
+  var root = document.documentElement;
+  var toggle = document.getElementById('themeToggle');
+  var stored = null;
+  try { stored = localStorage.getItem('dp-theme'); } catch(e) {}
+  if (stored === 'light' || stored === 'dark') { root.setAttribute('data-theme', stored); }
+  toggle.addEventListener('click', function() {
+    var current = root.getAttribute('data-theme');
+    var systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var effective = current === 'auto' ? (systemDark ? 'dark' : 'light') : current;
+    var next = effective === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('dp-theme', next); } catch(e) {}
+    toggle.setAttribute('aria-label', next === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+  });
+  var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reducedMotion) { document.documentElement.style.scrollBehavior = 'auto'; }
+})();
+</script>
+</body>
+</html>
