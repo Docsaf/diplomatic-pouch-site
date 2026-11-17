@@ -7,8 +7,8 @@ Ready to deploy to Cloudflare Pages, Netlify, GitHub Pages, or any static host.
 
 - `index.html` — **Public homepage.** Magazine-style front page with hero masthead,
   featured latest dispatch, and grid of recent dispatches. This is what readers see.
-- `archive.html` — **Editorial dashboard.** Full filterable grid of all dispatches with
-  status pips, search, and admin notes. Linked from the homepage's "Archive" nav item.
+- `archive.html` — **Archive.** Full filterable grid of all dispatches with
+  status pips and search. Keep editorial notes out of this public file. Linked from the homepage's "Archive" nav item.
 - `manifesto.html` — The publication's opening manifesto
 - `issue-002.html` through `issue-016.html` — The fifteen numbered dispatches
 - `cover-*.png` — Cover images (one per dispatch)
